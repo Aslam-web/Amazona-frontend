@@ -268,8 +268,11 @@ main {
 /* .productItemDetails li:last-child {
   margin-bottom: 1.5rem;
 } */
-.productItemDetails ul span {
+.productItemRating {
   color: gold;
+}
+.productItemRating span:last-child {
+  color: black;
 }
 /* .addToCart {
   border: blue solid 1px;

@@ -1,8 +1,9 @@
 import React from 'react'
-// import ProductItems from './ProductItems'
 import Rating from './Rating'
+
+
 export default function Products({item}) {
-  // console.log(item)
+  
   return (
     <article className="productItem">
       <a href="/productsForm.html" className="productItemimage">
@@ -15,13 +16,11 @@ export default function Products({item}) {
             <p>{item.brand}</p>
           </li>
           <li className="productItemDesc">{item.description}</li>
-          <li className="productItemPrice">{item.price}</li>
-          <Rating/>
+          <li className="productItemPrice">${item.price}</li>
+          <Rating rating = {item.rating} reviews = {item.numReviews}/>
         </ul>
         <button className="addToCart">Add To Cart</button>
       </div>
     </article>
-    
-
   )
 }
