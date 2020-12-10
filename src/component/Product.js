@@ -1,5 +1,6 @@
 import React from 'react'
 // import ProductItems from './ProductItems'
+import Rating from './Rating'
 export default function Products({item}) {
   // console.log(item)
   return (
@@ -15,15 +16,9 @@ export default function Products({item}) {
           </li>
           <li className="productItemDesc">{item.description}</li>
           <li className="productItemPrice">{item.price}</li>
-          <li className="productItemRating">
-            <span><i className="fa fa-star"></i></span>
-            <span><i className="fa fa-star"></i></span>
-            <span><i className="fa fa-star"></i></span>
-            <span><i className="fa fa-star"></i></span>
-            <span><i className="fa fa-star-half"></i></span>
-          </li>
+          <Rating/>
         </ul>
-        <button className="addToCart">{item.price}</button>
+        <button className="addToCart">Add To Cart</button>
       </div>
     </article>
     
