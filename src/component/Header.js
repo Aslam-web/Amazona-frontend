@@ -9,16 +9,20 @@ export default function Header() {
         <div className="bar"></div>
       </div>
       <div className="logo">
+      <a href="/">
         <img src="/images/eBag.png" alt="logo-img"/>
+      </a>
+
+ 
       </div>
       <div className="searchBox">
         <input type="text" id="searchItem"/>
         <button id="searchButton">Search</button>
       </div>
       <div className="links">
-        <a href="/productForm.html">Products </a>
-        <a href="/signupForm.html">Sign Up </a>
-        {/* <a href="/signinForm.html">Sign In<a> */}
+        <a href="/cart">Cart </a>
+        <a href="/sign">Sign In </a>
+        {/* <a href="/signinForm.html">Admin</a> */}
       </div>
     </header>
   )

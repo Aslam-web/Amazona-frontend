@@ -100,16 +100,21 @@ body {
 
 header{
   background-color: var(--bg-primary);
+  position: fixed;
   grid-area: header;
   width: 100%;
-  padding: 2px;  
+  height: 5rem;
+  padding: 2px; 
+  top: 0; 
+  left: 0; 
   box-sizing: border-box;
 }
+
 .row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 .hamburger {
   width: 6rem;
@@ -170,7 +175,7 @@ a{
   height: 3rem;
   padding: 0 2rem;
   border-radius: 10rem;
-
+  outline: none;
 }
 
 @media only screen and (max-width: 800px) {
@@ -191,6 +196,7 @@ a{
 main {
   border: green solid 1px;
   grid-area: main;
+
 }
 .productsTitle {
   text-align: center;
@@ -241,40 +247,28 @@ main {
   padding: .5rem 0rem;
   /* border: 1px red solid; */
 }
-
-
 .productItemName p {
   color: grey;
   font-size: 1.3rem;
   font-style: italic;
 }
-
-
-
 .productItemName a{
   color: black;
   font-size: 2rem;
   font-weight: bolder;
   letter-spacing: 0.3rem;
 }
-
-/* .productItemcat {
-  color: red;
-} */
 .productItemPrice{
   font-size: 2rem;
   font-weight: bold;
 }
-/* .productItemDetails li:last-child {
-  margin-bottom: 1.5rem;
-} */
 .productItemRating {
   color: gold;
 }
 .productItemRating span:last-child {
   color: black;
 }
-/* .addToCart {
+.addToCart {
   border: blue solid 1px;
   border-radius: 1.5rem;
   width: 50%;
@@ -283,7 +277,7 @@ main {
   display: block;
   outline: none;
   font-size: 1.6rem;
-} */
+}
 footer{
   border: blue solid 1px;
   grid-area: footer;
@@ -291,4 +285,58 @@ footer{
   color: var(--text-primary);
 }
 
+/* ------------------------ ProductScreen ------------------------------ */
 
+/******************/
+/* rows and columns */
+/******************/
+
+.col-2 {
+  border: solid 1px red;
+  flex: 2 1 40rem;
+  padding: 5rem;
+}
+.col-1 {
+  border: solid 1px blue;
+  flex: 1 1 20rem;
+}
+.row.top {
+  align-items: flex-start;
+}
+.row.center {
+  justify-content: center;
+}
+/* image */
+
+.large {
+  width: 100%;
+}
+
+.col-1 ul > * {
+  list-style: none;
+  margin-bottom: 0.5rem;
+}
+.col-1 ul {
+  padding: 0.5rem;
+}
+
+
+.success {
+  font-weight: bold;
+  color: #006400;
+}
+.danger {
+  font-weight: bold;
+  color: #8b0000;
+}
+
+/* Add To Cart button in product screen*/
+
+.primary {
+  padding: 0.5rem 0;
+  width: 50%;
+  display: block;
+  margin: auto;
+  border-radius: 20rem;
+  outline: none;
+}
