@@ -3,8 +3,11 @@ import Rating from './Rating'
 import {Link} from 'react-router-dom';
 
 export default function Product({item}) {
-  console.log(item)
+  // console.log(item)
+
+
   return (
+    
     <article className="productItem">
       <Link to={`/products/${item._id}`} className="productItemimage">
         <img src={item.image} alt=""/>
@@ -12,7 +15,7 @@ export default function Product({item}) {
       <div className="productItemDetails">
         <ul>
           <li className="productItemName">
-            <Link to="/productsForm.html" className="">{item.name}</Link>
+            <Link to={`/products/${item._id}`} className="">{item.name}</Link>
             <p>{item.brand}</p>
           </li>
           <li className="productItemDesc">{`/products/${item._id}`}</li>

@@ -5,11 +5,15 @@ import {Link} from 'react-router-dom';
 import Rating from '../component/Rating';
 
 export default function ProductScreen(props) {
-  console.log(props);
-  
-  const product = data.products.find(p => p._id == props.match.params.id)
-  console.log(product);
+  // console.log(props);
 
+  const qty = 100;
+  const product = data.products.find(p => p._id == props.match.params.id)
+  // console.log(product);
+
+  const addToCartHandler = () => {
+    props.history.push(`/cart/${product._id}/${qty}`)
+  }
 
   return (
     <section className="productsContainer">
@@ -20,7 +24,7 @@ export default function ProductScreen(props) {
    
     <div className="col-2">
      
-      <img className="large" src={product.image} />
+      <img className="large pad-5" src={product.image} />
     </div>
     <div className="col-1">
       <ul>
@@ -53,7 +57,9 @@ export default function ProductScreen(props) {
           </div>
         </li>
         <li>
-          <button className="primary block">Add To Cart</button>
+          {/* <Link to={`/cart/${product._id}`}> */}
+            <button className="primary block" onClick={addToCartHandler}>Add To Cart</button>
+          {/* </Link> */}
         </li>
         </ul>
       </div>

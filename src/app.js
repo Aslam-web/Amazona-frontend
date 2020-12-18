@@ -1,9 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import HomeScreen from './screen/HomeScreen'
 import ProductScreen from './screen/ProductScreen.js'
+import CartScreen from './screen/CartScreen';
+
 import Header from './component/Header'
 import NavigationLeft from './component/NavigationLeft'
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +20,8 @@ function App() {
         <main>
           <Switch>
           <Route path="/products/:id" myname ="aslam" component = {ProductScreen}/>
+          <Route path="/cart/:id/:qty" component = {CartScreen}/>
+          <Route path="/cart" component = {CartScreen}/>
           <Route path="/" component = {HomeScreen}/>
           </Switch>
         </main>

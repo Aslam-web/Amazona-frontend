@@ -111,6 +111,7 @@ header{
 }
 
 .row {
+  border: blue solid 1px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -167,7 +168,6 @@ a{
   border: none;
   outline: none;
   height: 3rem;
-  /* border: blue solid 1px; */
   width: 50%;
 }
 .searchBox button {
@@ -294,6 +294,8 @@ footer{
 .col-2 {
   border: solid 1px red;
   flex: 2 1 40rem;
+}
+.pad-5 {
   padding: 5rem;
 }
 .col-1 {
@@ -308,9 +310,17 @@ footer{
 }
 /* image */
 
-.large {
+img.large {
   width: 100%;
 }
+img.small {
+  border: solid 1px red;
+  width: 100%;
+  max-width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+}
+
 
 .col-1 ul > * {
   list-style: none;
