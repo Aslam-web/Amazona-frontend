@@ -8,7 +8,9 @@ import CartScreen from './screen/CartScreen';
 import Header from './component/Header'
 import NavigationLeft from './component/NavigationLeft'
 
-function App() {
+function App(props) {
+
+  console.log(props);
   return (
     <BrowserRouter>
       <NavigationLeft/>
