@@ -1,71 +1,128 @@
-import React from 'react'
-// import Link from 'react'
-import data from '../data'
+import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom';
 import Rating from '../component/Rating';
+import { useDispatch, useSelector } from 'react-redux';
+import { detailsProduct } from '../store/actions/productActions';
+import LoadingBox from '../component/LoadingBox';
+// [...Array(tot)].map((v,i) => v)
 
 export default function ProductScreen(props) {
-  // console.log(props);
+  
+  const dispatch = useDispatch();
+  const [qty, setQty] = useState(1);
+  const { isLoading, product, error } = useSelector(state => state.productDetails);
+  const productId = props.match.params.id;
 
-  const qty = 100;
-  const product = data.products.find(p => p._id == props.match.params.id)
-  // console.log(product);
+  useEffect(() => {
+    dispatch(detailsProduct(productId))
+  }, [productId])       // complains for not mentioning the dependancy "dispatch"
+
+  // const qty = 100;
+  // const product = data.products.find(p => p._id == props.match.params.id)
 
   const addToCartHandler = () => {
     props.history.push(`/cart/${product._id}/${qty}`)
   }
 
   return (
-    <section className="productsContainer">
 
-    <Link to='/'>Back to home</Link>
-    <div className="row top">
+    // <>from product screen {productId}</>
 
-   
-    <div className="col-2">
-     
-      <img className="large pad-5" src={product.image} />
-    </div>
-    <div className="col-1">
-      <ul>
-        <li>
-          <h1>{product.name}</h1>
-        </li>
-        <li><Rating rating={product.rating} reviews={product.numReviews}/></li>
-        <li>Price: ${product.price}</li>
-        <li>description : {product.description}</li>
-      </ul>
-    </div>
-    <div className="col-1">
-      <div className="card card body">
-        <ul>
-          <li>
-            <div className="row">
-              <div>Price</div>
-              <div className="price">${product.price}</div>
-            </div>
-          </li>
-        <li>
-          <div className="row">
-            <div>Status</div>
-            <div>
-              {product.countInStock > 0 ? 
-              (<span className="success">In Stock</span>)
-              :
-              (<span className="danger">Unavailable</span>)}
-            </div>
+    <>
+
+    { isLoading ? 
+      <LoadingBox/>
+
+      :
+
+      <section className="productsContainer">
+
+      <Link to='/'>Back to home {qty}</Link>
+      <div className="row top">
+
+        <div className="col-2">
+          <img className="large pad-5" src={product.image} />
+        </div>
+        <div className="col-1">
+          <ul>
+            <li>
+              <h1>{product.name}</h1>
+            </li>
+            <li><Rating rating={product.rating} reviews={product.numReviews}/></li>
+            <li>Price: ${product.price}</li>
+            <li>description : {product.description}</li>
+          </ul>
+        </div>
+        <div className="col-1">
+          <div className="card card body">
+            <ul>
+              {/* price */}
+              <li>
+                <div className="row">
+                  <div>Price</div>
+                  <div className="price">${product.price}</div>
+                </div>
+              </li>
+              {/* Status */}
+              <li>
+                <div className="row">
+                  <div>Status</div>
+                  <div>
+                    {product.countInStock > 0 ? 
+                    (<span className="success">In Stock</span>)
+                    :
+                    (<span className="danger">Unavailable</span>)}
+                  </div>
+                </div>
+              </li>
+              {/* quantity */}
+              <li>
+                <div className="row">
+                  <div>Quantity</div>
+                  <div>
+                    <select
+                    value={qty}
+                    onChange={(e) => setQty(e.target.value)}
+                    >
+                      {
+                        [...Array(product.countInStock)].map((v,i )=>
+                              <option selected key={i+1} value={i+1}>
+                              {i+1}
+                              </option>
+                          )
+                      }
+                    </select>
+                  </div>
+                </div>
+              </li>
+              <li>
+              <button className="primary block" onClick={addToCartHandler}>Add To Cart</button>
+              </li>
+            </ul>
           </div>
-        </li>
-        <li>
-          {/* <Link to={`/cart/${product._id}`}> */}
-            <button className="primary block" onClick={addToCartHandler}>Add To Cart</button>
-          {/* </Link> */}
-        </li>
-        </ul>
+        </div>
       </div>
-      </div>
-    </div>
 
     </section>
+
+    }
+  </>
   )
 }
+
+
+
+// {
+//   [...Array(product.countInStock)].map(
+//     (v,i) => (
+//       (i+1 == 1) ?
+//         <option selected key={i+1} value={i+1}>
+//         {i+1}
+//         </option>
+//       :
+//         <option key={i+1} value={i+1}>
+//         {i+1}
+//         </option>
+//     )
+//   )
+// }

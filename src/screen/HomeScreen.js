@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import LoadingBox from '../component/LoadingBox';
 
 import Product from '../component/Product'
-import { getProductAction } from '../store/actions/prodAction';
-
+import { getProductAction } from '../store/actions/productActions';
 
 
 export default function HomeScreen(props) {
@@ -14,31 +14,40 @@ export default function HomeScreen(props) {
 
   useEffect( () => {
     dispatch(getProductAction());
-  }, [dispatch]);
-
-
-  // const [products, setProducts] = useState([])
-
-  // useEffect(() => {
-    
-  //   const fetchData = async () => {
-  //     const { data } = await axios.get('http://localhost:2020/api/products');
-  //     setProducts(data);
-  //   }
-  //   fetchData();
-  // }, [])
-
-
-
-  // const { products} = data  
-  const productList = products.map(p => <Product key = {p._id } item = {p} />)
+  }, []);
+  const allProducts = products.map(p => <Product key = {p._id } item = {p} />)
+  // console.log(allProducts)
 
   return (
-    <section className="productsContainer">
-        <p className="productsTitle">Our Products...</p>
-        <div className="products">
-          {productList}
-        </div>
-      </section>
+    
+    <>
+    { isLoading ? 
+
+      <LoadingBox/>
+
+      :
+
+      <section className="productsContainer">
+      <p className="productsTitle">Our Products...</p>
+      <div className="products">
+        {allProducts}
+      </div>
+    </section>
+    
+    }
+  </>
+    
+      // <section className="productsContainer">
+      //   { isLoading ? 
+      //       (<LoadingBox/>)
+      //       :
+      //       (<p className="productsTitle">Our Products...</p>
+      //       <div className="products">
+      //         {allProducts}
+      //       </div>)
+
+      //   }
+      // </section>
+
   )
 }

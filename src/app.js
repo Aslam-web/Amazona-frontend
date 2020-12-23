@@ -9,26 +9,22 @@ import Header from './component/Header'
 import NavigationLeft from './component/NavigationLeft'
 
 function App(props) {
-
-  console.log(props);
   return (
     <BrowserRouter>
       <NavigationLeft/>
 
       <div className="grid-container">
 
-
         <Header/>
         <main>
           <Switch>
           <Route path="/products/:id" myname ="aslam" component = {ProductScreen}/>
-          <Route path="/cart/:id/:qty" component = {CartScreen}/>
+          {/* <Route path="/cart/:id/:qty" component = {CartScreen}/> */}
           <Route path="/cart" component = {CartScreen}/>
           <Route path="/" component = {HomeScreen}/>
           </Switch>
         </main>
         <footer className="row center">&#169; 2020 All rights reserved.</footer>
-
 
       </div>
     </BrowserRouter>

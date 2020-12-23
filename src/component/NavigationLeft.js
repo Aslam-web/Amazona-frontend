@@ -6,35 +6,35 @@ export default function NavigationLeft() {
         <ul className="navbarNav">
 
           <li className="navItem">
-            <a href="#" className="navLink">
+          <a href="/"  className="navLink">
               <i className="fa fa-user"></i>
               <span className="navLinkText">User</span>
             </a>
           </li>
 
           <li className="navItem">
-            <a href="#" className="navLink">
+          <a href="/"  className="navLink">
               <i className="fa fa-user"></i>
               <span className="navLinkText">Cart</span>
             </a>
           </li>
 
           <li className="navItem">
-            <a href="#" className="navLink">
+          <a href="/"  className="navLink">
               <i className="fa fa-user"></i>
               <span className="navLinkText">Product</span>
             </a>
           </li>
 
           <li className="navItem">
-            <a href="#" className="navLink">
+          <a href="/"  className="navLink">
               <i className="fa fa-user"></i>
               <span className="navLinkText">Contacts</span>
             </a>
           </li>
 
           <li className="navItem">
-            <a href="#" className="navLink">
+            <a href="/"  className="navLink">
               <i className="fa fa-user"></i>
               <span className="navLinkText">SignOut</span>
             </a>
