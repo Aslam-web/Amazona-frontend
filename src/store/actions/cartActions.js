@@ -14,12 +14,14 @@ export const addToCart = (productId, qty) => async (dispatch) => {
     const res = await axios.get(`http://localhost:2020/api/products/${productId}`);
     // console.log(res.data);
     const product = res.data;
-    // console.log(product);
+    console.log(product);
+    // debugger
     dispatch({
       type : CART_ADD_ITEM_SUCCESS,
-      payload : product
+      payload : {...product, qty}
     })
-  } catch (error) {
+  } 
+  catch (error) {
     dispatch({
       type : CART_ADD_ITEM_FAIL,
       payload : error.message

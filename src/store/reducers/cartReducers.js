@@ -13,31 +13,89 @@ const initialState = {
 
 export const addToCartReducer = (addTocartState = initialState, actions) => {
 
-  console.log(actions);
+  // console.log(actions);
   const { type, payload } = actions;
-  console.log(payload);
+  // console.log(payload);
   switch(type){
     case CART_ADD_ITEM_REQUEST:
       return {
         ...addTocartState,
-        isLoading : true
+        isLoading : true,
+        error:null
       };
+    
     case CART_ADD_ITEM_SUCCESS:
-      // console.log(payload);
+    let found = addTocartState.cartItems.findIndex(p => p._id == payload._id)
+
+    if(found <0){
       return {
         ...addTocartState,
         isLoading : false,
-        cartItems : payload,
+        cartItems : [...addTocartState.cartItems, payload],
         error : null
       };
+    }
+    else{
+      const newItem = [...addTocartState.cartItems]
+      newItem[found] = payload;
+      return {
+        ...addTocartState,
+        isLoading : false,
+        cartItems : newItem,
+        error : null
+      };
+    }
+     
     case CART_ADD_ITEM_FAIL:
       return {
         ...addTocartState,
         isLoading : false,
-        cartItems : [],
+        // cartItems : [],
         error : payload
       }
     default:
       return addTocartState;
   }
 }
+
+
+
+// case CART_ADD_ITEM_SUCCESS:
+//       let found = addTocartState.cartItems.findIndex(p => p._id == payload._id)
+
+//       if(found <0){
+//         return {
+//           ...addTocartState,
+//           isLoading : false,
+//           cartItems : [...addTocartState.cartItems, payload],
+//           error : null
+//         };
+//       }
+//       else{
+//         const newItem = [...addTocartState.cartItems]
+//         newItem[found] = payload;
+//         return {
+//           ...addTocartState,
+//           isLoading : false,
+//           cartItems : newItem,
+//           error : null
+//         };
+//       }
+    
+
+// {(found <0) ? 
+//   ({return {
+//     ...addTocartState,
+//     isLoading : false,
+//     cartItems : [...addTocartState.cartItems, payload],
+//     error : null
+//     };
+//   })
+// :        
+//   ({return {
+//     ...addTocartState,
+//     isLoading : false,
+//     cartItems : newItem,
+//     error : null
+//   };
+// })}

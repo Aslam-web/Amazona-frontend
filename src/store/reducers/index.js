@@ -5,5 +5,5 @@ import { getProductReducer, productDetailsReducer } from './productReducers';
 export default combineReducers({
   productList : getProductReducer,
   productDetails : productDetailsReducer,
-  cartItems : addToCartReducer
+  cart : addToCartReducer
 })

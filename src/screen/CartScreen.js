@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
+import Cart from '../component/Cart';
 import { addToCart } from '../store/actions/cartActions';
 // import data from '../data'
 
@@ -8,104 +9,42 @@ export default function CartScreen(props) {
 
   // console.log(props);
   const dispatch = useDispatch();
-  const productId = props.location.pathname.split('/')[2];
-  const qty = props.location.pathname.split('/')[3];
+  const cartItems = useSelector((state) => state.cart.cartItems);  
+  console.log(cartItems);
+
+  const allCartItems = cartItems.map(c => <Cart key = {c._id} item = {c} />);
+  
+  const { id, qty } = props.match.params;
   // console.log(qty);
   
   useEffect( () => {
-    dispatch(addToCart(productId, qty))
-  }, [productId, qty]);
+    dispatch(addToCart(id, qty))
+  }, [id, qty]);
 
   return (
-    <>from cart screen {qty}</>
+    // <>from cart screen:  productId = {id} ; quantity = {qty}</>
 
-    // <div className="row top">
-    //   <div className="col-2">
-    //     <h1>Shopping Cart</h1>
-    //     <ul>
+    <div className="row top">
+      <div className="col-2">
+        <h1>Shopping Cart</h1>
+        
+        {allCartItems}
 
-    //       <li>
-    //         <div className="row">
-    //           <div>
-    //             <img className="small" src={product.image} alt="Product-image"/>
-    //           </div>
-    //           <div className="min-30">
-    //             <Link >  
-    //               Sample Product
-    //             </Link>
-    //           </div>
-    //           <div>                
-    //             <select >
-    //               <option>product</option>
-    //             </select>
-    //           </div>
-    //           <div>$21</div>
-    //           <div>
-    //             <button>delete</button>
-    //           </div>
-    //         </div>
-    //       </li>
-
-    //       <li>
-    //         <div className="row">
-    //           <div>
-    //             <img className="small" src={product.image} alt="Product-image"/>
-    //           </div>
-    //           <div className="min-30">
-    //             <Link >  
-    //               Sample Product
-    //             </Link>
-    //           </div>
-    //           <div>                
-    //             <select >
-    //               <option>product</option>
-    //             </select>
-    //           </div>
-    //           <div>$21</div>
-    //           <div>
-    //             <button>delete</button>
-    //           </div>
-    //         </div>
-    //       </li>
-
-    //       <li>
-    //         <div className="row">
-    //           <div>
-    //             <img className="small" src={product.image} alt="Product-image"/>
-    //           </div>
-    //           <div className="min-30">
-    //             <Link >  
-    //               Sample Product
-    //             </Link>
-    //           </div>
-    //           <div>                
-    //             <select >
-    //               <option>product</option>
-    //             </select>
-    //           </div>
-    //           <div>$21</div>
-    //           <div>
-    //             <button>delete</button>
-    //           </div>
-    //         </div>
-    //       </li>
-
-    //     </ul>
-    //   </div>
-    //   <div className="col-1">
-    //     <div className="card card-body">
-    //       <ul>
-    //         <li>
-    //           <h2>Subtotal(12 items) : $ 1221</h2>
-    //         </li>
-    //         <li>
-    //           <button className="primary block">
-    //             Proceed To Checkout
-    //           </button>
-    //         </li>
-    //       </ul>
-    //     </div>
-    //   </div>
-    // </div>
+      </div>
+      <div className="col-1">
+        <div className="card card-body">
+          <ul>
+            <li>
+              <h2>Subtotal(12 items) : $ 1221</h2>
+            </li>
+            <li>
+              <button className="primary block">
+                Proceed To Checkout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   )
 }

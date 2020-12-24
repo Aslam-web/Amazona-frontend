@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
@@ -9,9 +10,11 @@ export default function Header() {
         <div className="bar"></div>
       </div>
       <div className="logo">
-      <a href="/">
+      {/* <a href="/"> */}
+      <Link to="/">
         <img src="/images/eBag.png" alt="logo-img"/>
-      </a>
+      </Link>
+      {/* </a> */}
 
  
       </div>
