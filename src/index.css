@@ -5,8 +5,8 @@
   font-family: 'Open Sans';
   --text-primary: #b6b6b6;
   --text-secondary: #ececec;
-  --bg-primary: #8E7A67;
-  --bg-secondary: #2C2525;
+  --bg-primary: #1571B7;
+  --bg-secondary: #1A87DB;
   --transition-speed: 600ms;
 }
 *{
@@ -120,17 +120,19 @@ header{
 .hamburger {
   width: 6rem;
   height: 100%;
-  background-color: blue;
+  padding: 0.7rem;
+  /* background-color: blue; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  cursor: pointer;
 }
 .bar {
   background-color: white;
   /* content: none; */
   height: 2px;
-  width: 36px;
+  width: 2.5rem;
 }
 
 .logo{

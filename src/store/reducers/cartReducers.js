@@ -1,7 +1,8 @@
 import {
   CART_ADD_ITEM_REQUEST,
   CART_ADD_ITEM_SUCCESS,
-  CART_ADD_ITEM_FAIL
+  CART_ADD_ITEM_FAIL,
+  CART_REMOVE_ITEM
 }
 from '../types';
 
@@ -36,16 +37,16 @@ export const addToCartReducer = (addTocartState = initialState, actions) => {
       };
     }
     else{
-      const newItem = [...addTocartState.cartItems]
-      newItem[found] = payload;
+      const newCartItems = [...addTocartState.cartItems]
+      newCartItems[found] = payload;
       return {
         ...addTocartState,
         isLoading : false,
-        cartItems : newItem,
+        cartItems : newCartItems,
         error : null
       };
     }
-     
+  
     case CART_ADD_ITEM_FAIL:
       return {
         ...addTocartState,
@@ -53,11 +54,23 @@ export const addToCartReducer = (addTocartState = initialState, actions) => {
         // cartItems : [],
         error : payload
       }
+
+
+
+    case CART_REMOVE_ITEM:
+      let newCartItems = addTocartState.cartItems.filter(p => p._id !== payload)
+      console.log("cartReducer" , payload)
+      return {
+        ...addTocartState,
+        isLoading : false,
+        cartItems : newCartItems,
+        error : null
+      };
+
     default:
       return addTocartState;
   }
 }
-
 
 
 // case CART_ADD_ITEM_SUCCESS:

@@ -14,6 +14,9 @@ export default function HomeScreen(props) {
 
   useEffect( () => {
     dispatch(getProductAction());
+    return ()=> {
+      console.log("homeScreen is unmounting")
+    }
   }, []);
   const allProducts = products.map(p => <Product key = {p._id } item = {p} />)
   // console.log(allProducts)
