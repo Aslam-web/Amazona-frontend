@@ -27,9 +27,7 @@ export default function HomeScreen(props) {
     { isLoading ? 
 
       <LoadingBox/>
-
       :
-
       <section className="productsContainer">
       <p className="productsTitle">Our Products...</p>
       <div className="products">

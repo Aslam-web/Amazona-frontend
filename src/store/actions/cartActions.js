@@ -12,7 +12,7 @@ export const addToCart = (productId, qty) => async (dispatch) => {
     type : CART_ADD_ITEM_REQUEST
   })
   try {
-    const res = await axios.get(`http://localhost:2020/api/products/${productId}`);
+    const res = await axios.get(`/api/products/${productId}`);
     // console.log(res.data);
     // check if productId exists
     const product = res.data;

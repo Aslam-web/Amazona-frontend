@@ -17,7 +17,7 @@ export const getProductAction = () => async (dispatch) => {
   })
 
   try {
-    const res = await axios.get('http://localhost:2020/api/products');
+    const res = await axios.get('/api/products');
     dispatch({
       type : PRODUCT_LIST_SUCCESS,
       payload : res.data
@@ -37,7 +37,7 @@ export const detailsProduct = (productId) => async (dispatch) => {
   })
 
   try {
-    const res = await axios.get(`http://localhost:2020/api/products/${productId}`)
+    const res = await axios.get(`/api/products/${productId}`)
     dispatch({
       type : PRODUCT_DETAILS_SUCCESS,
       payload : res.data

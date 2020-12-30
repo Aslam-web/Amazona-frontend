@@ -352,3 +352,37 @@ img.small {
   border-radius: 20rem;
   outline: none;
 }
+
+/* Form in SinginScreen */
+
+.form {
+  /* border: blue solid 1px; */
+  max-width: 60rem;
+  margin: 3rem auto 0;
+}
+.form > div {
+  margin-bottom: 1rem;
+}
+.form h1 {
+  font-size: 2rem;
+}
+.form label {
+  display: block;
+  margin: 1rem auto;
+}
+.form input {
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  outline: none;
+}
+.form button {
+  margin: 3rem 0 1rem;
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  outline: none;
+}
