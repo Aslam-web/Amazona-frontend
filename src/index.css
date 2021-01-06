@@ -13,6 +13,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  list-style: none;
 }
 body {
   font-size: 1.6rem;
@@ -111,7 +112,7 @@ header{
 }
 
 .row {
-  border: blue solid 1px;
+  /* border: blue solid 1px; */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -196,7 +197,7 @@ a{
 /******************/
 
 main {
-  border: green solid 1px;
+  /* border: green solid 1px; */
   grid-area: main;
 
 }
@@ -208,7 +209,7 @@ main {
 }
 .products {
   box-sizing: border-box;
-  border: green solid 1px;
+  /* border: green solid 1px; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   box-sizing: border-box;
@@ -263,6 +264,7 @@ main {
 .productItemPrice{
   font-size: 2rem;
   font-weight: bold;
+  color : red;
 }
 .productItemRating {
   color: gold;
@@ -271,7 +273,7 @@ main {
   color: black;
 }
 .addToCart {
-  border: blue solid 1px;
+  /* border: blue solid 1px; */
   border-radius: 1.5rem;
   width: 50%;
   padding: 0.5rem;
@@ -281,7 +283,7 @@ main {
   font-size: 1.6rem;
 }
 footer{
-  border: blue solid 1px;
+  /* border: blue solid 1px; */
   grid-area: footer;
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -294,14 +296,14 @@ footer{
 /******************/
 
 .col-2 {
-  border: solid 1px red;
+  /* border: solid 1px red; */
   flex: 2 1 40rem;
 }
 .pad-5 {
   padding: 5rem;
 }
 .col-1 {
-  border: solid 1px blue;
+  /* border: solid 1px blue; */
   flex: 1 1 20rem;
 }
 .row.top {
@@ -316,7 +318,7 @@ img.large {
   width: 100%;
 }
 img.small {
-  border: solid 1px red;
+  /* border: solid 1px red; */
   width: 100%;
   max-width: 5rem;
   height: 5rem;
@@ -353,7 +355,7 @@ img.small {
   outline: none;
 }
 
-/* Form in SinginScreen */
+/** Form **/
 
 .form {
   /* border: blue solid 1px; */
@@ -385,4 +387,70 @@ img.small {
   border-radius: 0.5rem;
   cursor: pointer;
   outline: none;
+}
+.form .radio input{
+  margin: 0 2rem 0 7rem;
+  width: auto;
+}
+.form .radio label {
+  display: inline-block;
+}
+
+/** Alert **/
+
+.alert {
+  padding: 1rem;
+  border: 0.1rem solid transparent;
+  border-radius: 0.5rem;
+}
+.alert-info {
+  color: #2020a0;
+  background-color: #e0e0ff;
+}
+.alert-danger {
+  color: #a02020;
+  background-color: #ffe0e0;
+}
+
+/** Checkout Steps **/
+.checkout-steps {  
+  margin: 1rem 1rem 0;
+}
+.checkout-steps > div {
+  border-top: grey solid 0.5rem;
+  padding: 1rem 0.2rem 0 0;
+  width: 25%;
+}
+.checkout-steps > .active {
+  border-color: red;
+  color: red;
+  font-weight: bold;
+}
+
+/** CartScreen **/
+
+.deleteFromCart {
+  padding : 0.4rem;
+}
+
+/** PlaceOrderScreen **/
+
+.header2 h2{
+  font-size: 1.6rem;
+}
+.card {
+  border : solid 1px grey;
+  border-radius: 0.7rem;
+  background-color: rgb(248, 245, 245);
+  margin: 1rem;
+  padding-left: 0.5rem;
+  line-height: 2.5;
+}
+.card-style {
+  border: 1px;
+  border-radius: 0.7rem;
+  background-color: rgb(236, 230, 230);
+}
+.card li {
+  margin: 1.5rem 0;
 }

@@ -3,7 +3,8 @@ import Rating from './Rating'
 import {Link} from 'react-router-dom';
 
 export default function Product({item}) {
-  // console.log(item)
+
+  console.log(item)
 
   return (
     
@@ -19,7 +20,10 @@ export default function Product({item}) {
           </li>
           <li className="productItemDesc">{item.description}</li>
           <li className="productItemPrice">${item.price}</li>
-          <Rating rating = {item.rating} reviews = {item.numReviews}/>
+          <li className="productItemRating">
+            <Rating rating = {item.rating} reviews = {item.numReviews}/>
+          </li>
+         
         </ul>
         <button className="addToCart">Add To Cart</button>
       </div>

@@ -7,10 +7,10 @@ import LoadingBox from '../component/LoadingBox';
 // [...Array(tot)].map((v,i) => v)
 
 export default function ProductScreen(props) {
-  
   const dispatch = useDispatch();
   const [qty, setQty] = useState(1);
   const { isLoading, product, error } = useSelector(state => state.productDetails);
+  console.log(product);
   const productId = props.match.params.id;
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function ProductScreen(props) {
   // const product = data.products.find(p => p._id == props.match.params.id)
 
   const addToCartHandler = () => {
-    props.history.push(`/cart/${product._id}/${qty}`)
+    props.history.push(`/cart/${product._id}/${qty}`);
   }
 
   return (
@@ -53,8 +53,8 @@ export default function ProductScreen(props) {
             <li>description : {product.description}</li>
           </ul>
         </div>
-        <div className="col-1">
-          <div className="card card body">
+        <div className="col-1 card-style">
+          <div>
             <ul>
               {/* price */}
               <li>

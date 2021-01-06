@@ -3,7 +3,11 @@ import {
   CART_ADD_ITEM_REQUEST,
   CART_ADD_ITEM_SUCCESS,
   CART_ADD_ITEM_FAIL,
-  CART_REMOVE_ITEM
+  CART_REMOVE_ITEM,
+  CART_SAVE_SHIPPING_ADDRESS,
+  CHECKOUT_SHIPPING,
+  CART_SAVE_PAYMENT_METHOD,
+  CHECKOUT_PAYMENT_METHOD
 } from "../types";
 
 export const addToCart = (productId, qty) => async (dispatch) => {
@@ -16,7 +20,6 @@ export const addToCart = (productId, qty) => async (dispatch) => {
     // console.log(res.data);
     // check if productId exists
     const product = res.data;
-    console.log(product);
     // debugger
 
     if(product._id){
@@ -41,5 +44,26 @@ export const removeCartItem = (_id) => dispatch => {
     type : CART_REMOVE_ITEM,
     payload : _id
   })
-  console.log("cartAction" , _id)
+  // console.log("cartAction" , _id)
+}
+
+export const saveShippingAddress = (data) => dispatch => {
+  // console.log(data);
+  dispatch({
+    type : CART_SAVE_SHIPPING_ADDRESS,
+    payload : data
+  })
+  dispatch({
+    type : CHECKOUT_SHIPPING
+  })
+}
+
+export const savePaymentMethod = (paymentMethod) => dispatch => {
+  dispatch({
+    type : CART_SAVE_PAYMENT_METHOD,
+    payload : paymentMethod
+  });
+  dispatch({
+    type : CHECKOUT_PAYMENT_METHOD
+  })
 }

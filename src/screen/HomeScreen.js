@@ -8,6 +8,8 @@ import { getProductAction } from '../store/actions/productActions';
 
 export default function HomeScreen(props) {
 
+  // console.log(props);
+
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { isLoading, products, error } = productList;
@@ -18,7 +20,8 @@ export default function HomeScreen(props) {
       console.log("homeScreen is unmounting")
     }
   }, []);
-  const allProducts = products.map(p => <Product key = {p._id } item = {p} />)
+     const allProducts = products.map(p => <Product key = {p._id } item = {p} />)
+  
   // console.log(allProducts)
 
   return (

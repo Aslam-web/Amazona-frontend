@@ -43,7 +43,7 @@ export default function Cart( {item} ) {
           </div>
           <div>${item.price}</div>
           <div>
-            <button onClick={removeFromCartHandler}>delete</button>
+            <button className="deleteFromCart" onClick={removeFromCartHandler}>delete</button>
           </div>
         </div>
       </li>

@@ -2,13 +2,17 @@ import {
   CART_ADD_ITEM_REQUEST,
   CART_ADD_ITEM_SUCCESS,
   CART_ADD_ITEM_FAIL,
-  CART_REMOVE_ITEM
+  CART_REMOVE_ITEM,
+  CART_SAVE_SHIPPING_ADDRESS,
+  CART_SAVE_PAYMENT_METHOD
 }
 from '../types';
 
 const initialState = {
   isLoading : false,
   cartItems : [],
+  shippingAddress : {},
+  paymentMethod : "",
   error : null
 }
 
@@ -66,49 +70,29 @@ export const addToCartReducer = (addTocartState = initialState, actions) => {
         cartItems : newCartItems,
         error : null
       };
+    
+      case CART_SAVE_SHIPPING_ADDRESS:
+        return {
+          ...addTocartState,
+          shippingAddress : payload
+        }
+      case CART_SAVE_PAYMENT_METHOD:
+        return {
+          ...addTocartState,
+          paymentMethod : payload
+        }
 
-    default:
+      default:
       return addTocartState;
   }
 }
 
+// const [formData, setformData] = useState({});
 
-// case CART_ADD_ITEM_SUCCESS:
-//       let found = addTocartState.cartItems.findIndex(p => p._id == payload._id)
-
-//       if(found <0){
-//         return {
-//           ...addTocartState,
-//           isLoading : false,
-//           cartItems : [...addTocartState.cartItems, payload],
-//           error : null
-//         };
-//       }
-//       else{
-//         const newItem = [...addTocartState.cartItems]
-//         newItem[found] = payload;
-//         return {
-//           ...addTocartState,
-//           isLoading : false,
-//           cartItems : newItem,
-//           error : null
-//         };
-//       }
-    
-
-// {(found <0) ? 
-//   ({return {
-//     ...addTocartState,
-//     isLoading : false,
-//     cartItems : [...addTocartState.cartItems, payload],
-//     error : null
-//     };
-//   })
-// :        
-//   ({return {
-//     ...addTocartState,
-//     isLoading : false,
-//     cartItems : newItem,
-//     error : null
-//   };
-// })}
+// const handleChange = (e) => {
+//   e.persist();
+//   setformData(formData => ({ 
+//     ...formData, 
+//     [e.target.name]: e.target.value })
+//   )
+// }

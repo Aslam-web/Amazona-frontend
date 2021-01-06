@@ -26,10 +26,17 @@ export const getProductReducer = (getProductState = initialState, action) => {
         isLoading : true
       };
 
+    // case PRODUCT_LIST_SUCCESS:  *** same as Line # 36-41
+    //   return{
+    //     ...getProductState,
+    //     products: payload,
+    //     isLoading : false
+    //   };
+
     case PRODUCT_LIST_SUCCESS:
       return{
         ...getProductState,
-        ...payload,
+        products: payload,    // Check this later*****
         isLoading : false
       };
 
@@ -41,7 +48,7 @@ export const getProductReducer = (getProductState = initialState, action) => {
     
     default:
       return getProductState;
-  }
+  };
 }
 
 const initialState2 = {
