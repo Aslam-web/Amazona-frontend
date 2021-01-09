@@ -3,8 +3,7 @@ import Rating from './Rating'
 import {Link} from 'react-router-dom';
 
 export default function Product({item}) {
-
-  console.log(item)
+  
 
   return (
     

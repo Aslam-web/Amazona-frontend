@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import Cart from '../component/Cart';
 import { addToCart } from '../store/actions/cartActions';
 
 export default function CartScreen(props) {
-
+  
   // console.log(props);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);  
-
   const allCartItems = cartItems.map(c => <Cart key = {c._id} item = {c} />);
   
-  const { id } = props.match.params;
-  const qty = Number(props.match.params.qty);
+  // const { id } = props.match.params;
+  // const qty = Number(props.match.params.qty);
+  let { id, qty} = useParams();
+  qty = Number(qty);
   const totQty = cartItems.reduce( (tot, item) =>{return item.qty + tot} , 0);
   const totAmount = cartItems.reduce( (tot, item) =>{return item.price * item.qty + tot} , 0);
   
@@ -31,7 +33,7 @@ export default function CartScreen(props) {
     // <>from cart screen:  productId = {id} ; quantity = {qty}</>
 
     <div className="row top">
-      <div className="col-2">
+      <div className="col-2 cartItems">
         <h1>Shopping Cart</h1>
         
         {allCartItems}

@@ -10,7 +10,6 @@ export default function PaymentScreen(props) {
 
   const submitButtonHandler = (e) => {
     e.preventDefault();
-    console.log(paymentMethod);
     dispatch(savePaymentMethod(paymentMethod));
     
     props.history.push('/placeorder');

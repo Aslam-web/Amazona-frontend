@@ -18,7 +18,6 @@ export const getProductAction = () => async (dispatch) => {
 
   try {
     const res = await axios.get('/api/products');
-    console.log(res.data)
     dispatch({
       type : PRODUCT_LIST_SUCCESS,
       payload : res.data
@@ -44,7 +43,7 @@ export const detailsProduct = (productId) => async (dispatch) => {
       payload : res.data
     })
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     dispatch({
       type : PRODUCT_DETAILS_FAIL,
       payload : error.message

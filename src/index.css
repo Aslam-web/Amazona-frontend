@@ -145,19 +145,30 @@ header{
   width: 100%;
 }
 
-
 a{
   text-decoration: none;
 }
 
 .links a {
-  padding: 0 1rem;
+  padding: 0 2rem;
   color: var(--text-primary);
 }
-
-
+.cartLink {
+  position: relative;
+}
+.badge {
+  position: absolute;
+  top: -14px;
+  background-color: red;
+  border-radius: 50%;
+  padding: 0.2rem;
+  opacity: 0.8;
+}
 .links a:hover {
   color: var(--text-secondary);
+}
+.links a span {
+  color: var(--text-primary)
 }
 .searchBox {
   margin: 0 30px;
@@ -179,6 +190,7 @@ a{
   padding: 0 2rem;
   border-radius: 10rem;
   outline: none;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {
@@ -432,6 +444,9 @@ img.small {
 .deleteFromCart {
   padding : 0.4rem;
 }
+.cartItems ul{
+  margin: 1.5rem;
+}
 
 /** PlaceOrderScreen **/
 
@@ -447,9 +462,10 @@ img.small {
   line-height: 2.5;
 }
 .card-style {
-  border: 1px;
+  border: #F0B4B4 2px solid;
   border-radius: 0.7rem;
   background-color: rgb(236, 230, 230);
+  margin-right: 1rem;
 }
 .card li {
   margin: 1.5rem 0;

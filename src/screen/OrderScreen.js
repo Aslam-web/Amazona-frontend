@@ -25,20 +25,20 @@ export default function PlaceOrderScreen(props) {
 
   return (
     <div>
-      <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <div className="row top" >
         <div className="col-2">
           <ul className="header2">
             <li>
               <div className="card">
                 <h2>Shipping </h2>
+                <p> <strong> Full Name : </strong> {address}, {city}, {postalcode}, {country}</p>
                 <p> <strong> Address : </strong> {address}, {city}, {postalcode}, {country}</p>
               </div>
             </li>
             <li>
               <div className="card">
                 <h2>Payment</h2>
-                <p><strong> Method : </strong>{paymentMethod}</p>
+                <p> <strong> Method : </strong>{paymentMethod}</p>
               </div>
             </li>
             <li>

@@ -11,18 +11,17 @@ import {
 } from "../types";
 
 export const addToCart = (productId, qty) => async (dispatch) => {
-
+  // console.log(productId, qty);
   dispatch({
     type : CART_ADD_ITEM_REQUEST
   })
   try {
     const res = await axios.get(`/api/products/${productId}`);
-    // console.log(res.data);
-    // check if productId exists
-    const product = res.data;
-    // debugger
-
+    
+    let product = res.data;
     if(product._id){
+   
+    // delete product._id;
     dispatch({
       type : CART_ADD_ITEM_SUCCESS,
       payload : {...product, qty}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 import CheckoutSteps from '../component/CheckoutSteps';
@@ -13,7 +13,7 @@ export default function SigninScreen(props) {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const userSignin = useSelector(state => state.userSignin);
-  // const { signedIn } = useSelector(state => state.checkoutSteps);
+  const { signedIn } = useSelector(state => state.checkoutSteps);
   const { isLoading, userInfo, error } = userSignin;
 
   const submitButtonHandler = (e) => {
@@ -23,10 +23,12 @@ export default function SigninScreen(props) {
     // props.history.push('/shipping');
   }
 
+  useEffect( () => console.log(signedIn) , [signedIn] );
+
   return (
     <div>
       <CheckoutSteps step1></CheckoutSteps>
-      <Link to="/shipping">shipping screen</Link>
+      
       <form className="form" onSubmit={submitButtonHandler}>
         <div>
           <h1>Sign In</h1>
@@ -49,6 +51,7 @@ export default function SigninScreen(props) {
         <div>
           New customer?<Link to="/register"> Create new account</Link>
         </div>
+        <Link to="/shipping">shipping screen</Link>
       </form>
       
     </div>

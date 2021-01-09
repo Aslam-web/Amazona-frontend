@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import LoadingBox from '../component/LoadingBox'
 import { registerAction } from '../store/actions/userActions';
 
-export default function RegisterScreen() {
-
+export default function RegisterScreen(props) {
+  console.log(props);
   const dispatch = useDispatch();
+  // const {  }
   const [ name, setName ] = useState('');
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ confirmPassword, setConfirmPassword] = useState('');
   // console.log(name, email, password, confirmPassword);
-
+  
   const submitButtonHandler = (e) => {
     e.preventDefault();
     if(password !== confirmPassword) {
@@ -22,6 +23,10 @@ export default function RegisterScreen() {
       dispatch(registerAction(name, email, password));
     }
   }
+  // useEffect(() => {
+  //   console.log("inside useeffect")
+  // }, [])       
+
 
   return (
     <div>

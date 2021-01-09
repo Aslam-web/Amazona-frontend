@@ -3,6 +3,7 @@ import { addToCartReducer } from './cartReducers';
 import { userRegisterReducer, userSigninReducer } from './userReducers';
 import { getProductReducer, productDetailsReducer } from './productReducers';
 import { checkoutReducer } from './checkoutStepsReducer';
+import { createOrderReducer } from './orderReducer';
 
 export default combineReducers({
   productList : getProductReducer,
@@ -10,5 +11,6 @@ export default combineReducers({
   cart : addToCartReducer,
   userSignin : userSigninReducer,
   userRegister : userRegisterReducer,
-  checkoutSteps : checkoutReducer
+  checkoutSteps : checkoutReducer,
+  createOrder : createOrderReducer
 })

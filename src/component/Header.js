@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-export default function Header() {
+export default function Header(props)  {
+
+    const { user } = useSelector(state => state.userSignin.userInfo);
+    const { cartItems }= useSelector(state => state.cart)
+    const totQty = cartItems.reduce( (a, i) => a + i.qty, 0 )
+
+    useEffect( () => {},[user])
+
   return (
     <header className="row">
       <div className="hamburger">
@@ -23,8 +31,10 @@ export default function Header() {
         <button id="searchButton">Search</button>
       </div>
       <div className="links">
-        <a href="/cart">Cart </a>
-        <a href="/sign">Sign In </a>
+        <Link to="/cart" className="cartLink">Cart<span className="badge">{totQty}</span></Link>
+          {
+            user ? <Link to="/">{user.name}</Link> : <Link to="/signin">Sign In</Link>
+          }
         {/* <a href="/signinForm.html">Admin</a> */}
       </div>
     </header>

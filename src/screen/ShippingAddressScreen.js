@@ -15,13 +15,13 @@ export default function ShippingAddressScreen(props) {
 
   const { signedIn } = useSelector(state => state.checkoutSteps);
 
-  // useEffect( () => {
-  //   console.log("signedIn " + signedIn);
-  //   if(!signedIn){
-  //     props.history.push('/signin');
-  //   };
+  useEffect( () => {
+    console.log("signedIn " + signedIn);
+    if(!signedIn){
+      props.history.push('/signin');
+    };
     
-  // }, [signedIn]);
+  }, [signedIn]);
   
   const submitButtonHandler = (e) => {
     e.preventDefault();
